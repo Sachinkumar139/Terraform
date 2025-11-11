@@ -35,3 +35,26 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+# Terraform directories
+.terraform/
+.terraform.lock.hcl
+
+# Local state files
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+
+# Sensitive variable files
+*.tfvars
+*.tfvars.json
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Provider executables
+*.exe
