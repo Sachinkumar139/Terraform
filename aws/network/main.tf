@@ -5,8 +5,6 @@ resource "aws_vpc" "base" {
     Env  = "dev"
   }
 }
-
-
 resource "aws_subnet" "subnets" {
   count             = length(var.network_info.subnets)
   availability_zone = var.network_info.subnets[count.index].az
