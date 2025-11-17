@@ -1,0 +1,65 @@
+###############################
+# Terraform Default Ignores
+###############################
+
+# Local .terraform directories
+**/.terraform/*
+
+# Terraform lock files (optional to commit)
+.terraform.lock.hcl
+
+# Terraform state files (NEVER commit!)
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Terraform variable files (contain secrets)
+*.tfvars
+*.tfvars.json
+*.auto.tfvars
+
+# Terraform plan files
+*.tfplan
+
+# Graph output files
+*.svg
+
+###############################
+# Windows OS Ignores
+###############################
+
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+
+# Windows system folder
+$RECYCLE.BIN/
+
+# Installer files
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+###############################
+# IDE / Editor Ignores (Optional)
+###############################
+
+# VSCode
+.vscode/
+.history/
+
+# JetBrains
+.idea/
+
+# Python virtual environments (if any scripts exist)
+venv/
+.env/
+__pycache__/
+*.pyc
