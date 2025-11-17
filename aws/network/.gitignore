@@ -17,7 +17,6 @@ crash.log
 crash.*.log
 
 # Terraform variable files (contain secrets)
-*.auto.tfvars
 
 # Terraform plan files
 *.tfplan
