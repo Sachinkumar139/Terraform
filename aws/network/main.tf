@@ -8,17 +8,17 @@ resource "aws_vpc" "base" {
 }
 
 resource "aws_internet_gateway" "base" {
-  count  = length(var.network_info.public_subnets) > 0 ? 1 : 0
+  count  = local.has_public_subnets ? 1 : 0
   vpc_id = aws_vpc.base.id
   tags = {
     Name = var.network_info.name
   }
 }
 resource "aws_route_table" "public" {
-  count  = length(var.network_info.public_subnets) > 0 ? 1 : 0
+  count  = local.has_public_subnets ? 1 : 0
   vpc_id = aws_vpc.base.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = local.anywhere
     gateway_id = aws_internet_gateway.base[0].id
   }
   tags = {
@@ -47,7 +47,7 @@ resource "aws_route_table_association" "public" {
 
 
 resource "aws_route_table" "private" {
-  count  = length(var.network_info.private_subnets) > 0 ? 1 : 0
+  count  = local.has_private_subnets ? 1 : 0
   vpc_id = aws_vpc.base.id
   tags = {
     Name = "private"
