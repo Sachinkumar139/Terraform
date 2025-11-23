@@ -10,10 +10,15 @@ variable "network_info" {
   type = object({
     name = string
     cidr = string
-    subnets = list(object({
+    private_subnets = list(object({
       name = string
       cidr = string
       az   = string
+    }))
+    public_subnets = list(object({
+      name = string
+      az   = string
+      cidr = string
     }))
   })
 
@@ -21,27 +26,28 @@ variable "network_info" {
     name = "nop"
     cidr = "10.0.0.0/16"
 
-    subnets = [
+    private_subnets = [
       {
-        name = "app1"
-        az   = "ap-south-1a"
-        cidr = "10.0.0.0/24"
-      },
-      {
-        name = "app2"
-        cidr = "10.0.1.0/24"
-        az   = "ap-south-1b"
-      },
-      {
-        name = "db-1"
+        name = "db1"
         az   = "ap-south-1a"
         cidr = "10.0.2.0/24"
       },
       {
-        name = "db-2"
-        az   = "ap-south-1b"
+        name = "db2"
         cidr = "10.0.3.0/24"
-      }
-    ]
+        az   = "ap-south-1b"
+    }]
+    public_subnets = [{
+      name = "app1"
+      az   = "ap-south-1a"
+      cidr = "10.0.0.0/24"
+      }, {
+      name = "app2"
+      az   = "ap-south-1b"
+      cidr = "10.0.1.0/24"
+
+
+    }]
+
   }
 }
