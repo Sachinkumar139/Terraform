@@ -39,8 +39,8 @@ variable "web_security_group" {
     name = string
     rules = map(object({
       priority                   = number
-      direction                  = string
-      protocol                   = string
+      direction                  = optional(string, "Inbound")
+      protocol                   = optional(string, "Tcp")
       source_port_range          = string
       destination_port_range     = string
       source_address_prefix      = string
@@ -82,6 +82,10 @@ variable "web_security_group" {
         access                     = "Allow"
       }
     }
+  }
+  validation {
+    condition     = length(var.web_security_group.name) == 0 && length(var.web_security_group.name) > 10
+    error_message = "network name cannot be greater than 10 or empty"
   }
 
 }
