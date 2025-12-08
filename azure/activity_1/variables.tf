@@ -83,9 +83,16 @@ variable "web_security_group" {
       }
     }
   }
-  validation {
-    condition     = length(var.web_security_group.name) == 0 && length(var.web_security_group.name) > 10
-    error_message = "network name cannot be greater than 10 or empty"
-  }
+  
 
+}
+
+variable "web_server"  {
+  type = object({
+    name = string
+  })
+  default = {
+    name = "web1"
+  }
+  
 }
